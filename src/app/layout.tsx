@@ -3,9 +3,9 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./_components/Hydrate/Hydrate";
 import { Toaster } from "@/components/ui/sonner";
-import { Analytics } from "@vercel/analytics/next";
-import GoogleAnalytics from "./_components/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/next"
 
+// Importando Montserrat como fonte global
 const montserratSans = Montserrat({
   variable: "--font-montserrat-sans",
   subsets: ["latin"],
@@ -26,12 +26,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${montserratSans.variable} font-sans antialiased bg-background text-foreground`}>
-        <GoogleAnalytics />
         <Hydrate>
           {children}
           <Toaster />
         </Hydrate>
-        <Analytics />
       </body>
     </html>
   );
