@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Hydrate from "./_components/Hydrate/Hydrate";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/next"
 
 // Importando Montserrat como fonte global
 const montserratSans = Montserrat({
