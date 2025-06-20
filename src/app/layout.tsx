@@ -4,7 +4,7 @@ import "./globals.css";
 import Hydrate from "./_components/Hydrate/Hydrate";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
-import GoogleAnalytics from "./_components/GoogleAnalytics";  // <<< Aqui a nova importação
+import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 const montserratSans = Montserrat({
   variable: "--font-montserrat-sans",
@@ -26,12 +26,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${montserratSans.variable} font-sans antialiased bg-background text-foreground`}>
-        <GoogleAnalytics /> {/* <<< Adicionando o Analytics */}
+        <GoogleAnalytics />
         <Hydrate>
           {children}
           <Toaster />
         </Hydrate>
-        <Analytics /> {/* Caso queira manter o Analytics da Vercel também */}
+        <Analytics />
       </body>
     </html>
   );
