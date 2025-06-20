@@ -1,29 +1,23 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+'use client';
 
-export default function Document() {
+import Script from 'next/script';
+
+export default function GoogleAnalytics() {
   return (
-    <Html lang="pt-BR">
-      <Head>
-        {/* Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-CQTV236680"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-CQTV236680');
-            `,
-          }}
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
+    <>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-CQTV236680"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-CQTV236680');
+        `}
+      </Script>
+    </>
   );
 }
