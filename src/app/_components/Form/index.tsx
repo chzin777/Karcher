@@ -54,7 +54,7 @@ export default function ContactForm() {
         `Olá! Meu nome é ${data.fullName}, sou da empresa ${data.company} e gostaria de agendar uma demonstração!`
       )
 
-      window.location.href = `https://wa.me/6239462100?text=${mensagemWhatsapp}`
+      window.location.href = `https://wa.me/556281595786?text=${mensagemWhatsapp}`
 
     } catch (error) {
       toast.error('Erro ao enviar formulário. Tente novamente.')
