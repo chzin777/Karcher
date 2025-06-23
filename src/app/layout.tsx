@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${montserratSans.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${montserratSans.variable} font-sans antialiased text-foreground`}>
         <GoogleAnalytics />  {/* <<< Google Analytics inserido corretamente */}
         <Hydrate>
           {children}
