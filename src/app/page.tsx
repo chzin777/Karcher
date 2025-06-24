@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import ContactForm from './_components/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +9,39 @@ import ProductsSection from './_components/ProductsSection'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Home() {
+  const [saturation, setSaturation] = useState(100);
+  const [xOpacity, setXOpacity] = useState(0);
+  const startScroll = 1250;  // Onde o X começa a aparecer
+  const endScroll = 1900;    // Onde o X fica 100% visível
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      const maxScrollForSaturation = 2000;
+      const progressForSaturation = Math.min(scrollY / maxScrollForSaturation, 1);
+      let newSaturation = 100 - Math.pow(progressForSaturation, 2) * 100;
+      if (newSaturation < 0) newSaturation = 0;
+      if (newSaturation > 100) newSaturation = 100;
+      setSaturation(newSaturation);
+
+      // Novo cálculo para o X
+      let opacity = 0;
+      if (scrollY >= startScroll && scrollY <= endScroll) {
+        opacity = (scrollY - startScroll) / (endScroll - startScroll);  // Normaliza de 0 até 1
+      } else if (scrollY > endScroll) {
+        opacity = 1;
+      } else {
+        opacity = 0;
+      }
+
+      setXOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleScroll = (e: React.MouseEvent<HTMLElement, MouseEvent>, target: string) => {
@@ -18,6 +51,11 @@ export default function Home() {
       section.scrollIntoView({ behavior: 'smooth' })
     }
     setMenuOpen(false)
+  }
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   }
 
   return (
@@ -109,7 +147,7 @@ export default function Home() {
           </h2>
 
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
-            TECNOLOGIA, EFICIÊNCIA E PERFORMANCE EM HIGIENE PROFISSIONAL PARA VOCÊ FOCAR NO QUE REALMENTE IMPORTA: O CRESCIMENTO DO SEU NEGÓCIO.
+            SOLUÇÕES DE LIMPEZA PROFISSIONAL PARA SUPERMERCADOS, CENTROS LOGÍSTICOS E INDÚSTRIAS. <br></br> ALTA PERFORMANCE COM ECONOMIA REAL.
           </h1>
 
           <a href="#produtos">
@@ -164,9 +202,70 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }}
+          className="mt-6"
+        >
+          <a
+            href="#contato"
+            onClick={(e) => handleScroll(e, '#contato')}
+            className="inline-block bg-[#feed00] text-black px-6 py-3 text-base sm:text-lg font-bold uppercase hover:bg-black hover:text-[#feed00] transition"
+          >
+            Sim, quero ganhar produtividade com Karcher
+          </a>
+        </motion.div>
       </section>
 
-      <ProductsSection />
+      <section className='text-white text-center text-xl md:text-4xl '>
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+          className='mt-06'
+        >
+          <strong>SUA EQUIPE AINDA PERDE HORAS COM LIMPEZA MANUAL?</strong>
+
+          <div className='relative w-full max-w-[1000px] mx-auto p-16'>
+            <img
+              src="/images/limpeza-manual.jpg"
+              alt="Limpeza Manual"
+              style={{
+                filter: `saturate(${saturation}%)`,
+                transition: 'filter 0.2s ease-out',
+              }}
+              className='w-full object-cover'
+            />
+            <div
+              className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none"
+              style={{
+                opacity: xOpacity,
+                transition: 'opacity 0.2s ease-out',
+              }}
+            >
+              <span
+                style={{
+                  color: 'red',
+                  fontSize: '200px',
+                  fontWeight: 'bold',
+                  lineHeight: '1',
+                  textShadow: '0 0 20px rgba(0,0,0,0.7)',
+                }}
+              >
+                X
+              </span>
+            </div>
+          </div>
+
+          <strong>SUA EQUIPE PODE FAZER MUITO MAIS: <br/> TROQUE O ESFORÇO MANUAL POR TECNOLOGIA INTELIGENTE DE LIMPEZA.</strong>
+        </motion.div>
+      </section>
+
+      <ProductsSection handleScroll={handleScroll} />
 
       {/* FORMULÁRIO */}
       <motion.section

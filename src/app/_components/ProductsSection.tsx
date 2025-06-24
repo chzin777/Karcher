@@ -1,8 +1,12 @@
 'use client'
+type ProductsSectionProps = {
+  handleScroll: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => void;
+}
+
 
 import { motion } from 'framer-motion'
 
-export default function ProductsSection() {
+export default function ProductsSection({ handleScroll }: ProductsSectionProps) {
   const fadeInLeft = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
@@ -126,8 +130,7 @@ export default function ProductsSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ amount: 0.3 }}
-              className={`w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-10 md:px-14 py-10 z-10 relative 
-              text-center md:text-left`}
+              className={`w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-10 md:px-14 py-10 z-10 relative text-center md:text-left`}
             >
               <div className="max-w-3xl mx-auto md:mx-0 space-y-4">
                 <h2 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-yellow-400 uppercase tracking-wide leading-tight">
@@ -150,6 +153,23 @@ export default function ProductsSection() {
                     </p>
                   ))}
                 </div>
+
+                {/* Botão ao lado de cada produto */}
+                <motion.div
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ amount: 0.3 }}
+                  className="mt-6"
+                >
+                  <a
+                    href="#contato"
+                    onClick={(e) => handleScroll(e, '#contato')}
+                    className="inline-block bg-[#feed00] text-black px-6 py-3 text-base sm:text-lg font-bold uppercase hover:bg-black hover:text-[#feed00] transition"
+                  >
+                    Quero ver esse equipamento funcionando
+                  </a>
+                </motion.div>
               </div>
             </motion.div>
           </div>
