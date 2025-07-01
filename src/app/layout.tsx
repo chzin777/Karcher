@@ -14,26 +14,28 @@ const montserratSans = Montserrat({
 });
 
 export const metadata = {
-  title: "Limpeza Profissional | R3 Suprimentos",
+  title: "Lavadora de alta pressão | R3 Suprimentos",
   description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
-  keywords: ["limpeza profissional", "equipamentos de limpeza", "limpeza industrial", "suprimentos para limpeza", "R3 Suprimentos"],
-  robots: "index, follow",
-  authors: [{ name: "R3 Suprimentos", url: "https://r3suprimentos.com.br" }],
   openGraph: {
-    title: "R3 Suprimentos | Limpeza Profissional de Alta Performance",
-    description: "A R3 Suprimentos oferece soluções de limpeza profissional com economia e tecnologia para empresas.",
-    url: "https://karcher-r3.com.br",
-    siteName: "R3 Suprimentos",
+    type: "website",
+    url: "https://www.karcher-r3.com.br/",
+    title: "Lavadora de alta pressão | R3 Suprimentos",
+    description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
     images: [
       {
-        url: "/images/logo.png",
+        url: "https://metatags.io/images/meta-tags.png", // Substitua por uma imagem sua depois
         width: 1200,
         height: 630,
-        alt: "Imagem de limpeza profissional"
+        alt: "Lavadora de alta pressão da R3 Suprimentos"
       }
-    ],
-    type: "website",
+    ]
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lavadora de alta pressão | R3 Suprimentos",
+    description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
+    images: ["https://metatags.io/images/meta-tags.png"] // Substitua por uma imagem sua depois
+  }
 }
 
 export default function RootLayout({
