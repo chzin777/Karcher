@@ -8,29 +8,6 @@ import { faFacebookF, faInstagram, faLinkedinIn } from '@fortawesome/free-brands
 import ProductsSection from './_components/ProductsSection'
 import { AnimatePresence, motion } from 'framer-motion'
 
-export const metadata = {
-  title: "Limpeza Profissional | R3 Suprimentos",
-  description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
-  keywords: ["limpeza profissional", "equipamentos de limpeza", "limpeza industrial", "suprimentos para limpeza", "R3 Suprimentos"],
-  robots: "index, follow",
-  authors: [{ name: "R3 Suprimentos", url: "https://r3suprimentos.com.br" }],
-  openGraph: {
-    title: "R3 Suprimentos | Limpeza Profissional de Alta Performance",
-    description: "A R3 Suprimentos oferece soluções de limpeza profissional com economia e tecnologia para empresas.",
-    url: "https://karcher-r3.com.br",
-    siteName: "R3 Suprimentos",
-    images: [
-      {
-        url: "/images/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Imagem de limpeza profissional"
-      }
-    ],
-    type: "website",
-  },
-}
-
 export default function Home() {
   const [saturation, setSaturation] = useState(100);
   const [xOpacity, setXOpacity] = useState(0);

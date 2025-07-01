@@ -13,10 +13,28 @@ const montserratSans = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Conheça os Produtos da Karcher",
-  description: "Criado por R3 Tech",
-};
+export const metadata = {
+  title: "Limpeza Profissional | R3 Suprimentos",
+  description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
+  keywords: ["limpeza profissional", "equipamentos de limpeza", "limpeza industrial", "suprimentos para limpeza", "R3 Suprimentos"],
+  robots: "index, follow",
+  authors: [{ name: "R3 Suprimentos", url: "https://r3suprimentos.com.br" }],
+  openGraph: {
+    title: "R3 Suprimentos | Limpeza Profissional de Alta Performance",
+    description: "A R3 Suprimentos oferece soluções de limpeza profissional com economia e tecnologia para empresas.",
+    url: "https://karcher-r3.com.br",
+    siteName: "R3 Suprimentos",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Imagem de limpeza profissional"
+      }
+    ],
+    type: "website",
+  },
+}
 
 export default function RootLayout({
   children,
