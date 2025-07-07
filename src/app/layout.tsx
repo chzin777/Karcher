@@ -14,25 +14,25 @@ const montserratSans = Montserrat({
 });
 
 export const metadata = {
-  title: "Lavadora de alta pressão | R3 Suprimentos",
+  title: "Higiene profissional | R3 Suprimentos",
   description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
   openGraph: {
     type: "website",
     url: "https://www.karcher-r3.com.br/",
-    title: "Lavadora de alta pressão | R3 Suprimentos",
+    title: "Higiene profissional | R3 Suprimentos",
     description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
     images: [
       {
         url: "https://metatags.io/images/meta-tags.png", // Substitua por uma imagem sua depois
         width: 1200,
         height: 630,
-        alt: "Lavadora de alta pressão da R3 Suprimentos"
+        alt: "Higiene profissional - R3 Suprimentos"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lavadora de alta pressão | R3 Suprimentos",
+    title: "Higiene profissional | R3 Suprimentos",
     description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
     images: ["https://metatags.io/images/meta-tags.png"] // Substitua por uma imagem sua depois
   }
