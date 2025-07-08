@@ -5,14 +5,28 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Form, FormField, FormItem, FormLabel, FormControl } from '@/components/ui/form'
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage
+} from '@/components/ui/form'
+import { Checkbox } from '@/components/ui/checkbox'
 import { toast } from 'sonner'
 
+// 🧠 Validação com Zod
 const schema = z.object({
   fullName: z.string().min(3, 'Informe o nome completo'),
   phone: z.string().min(8, 'Informe um telefone válido'),
   email: z.string().email({ message: 'E-mail inválido' }),
   company: z.string().min(2, 'Informe o nome da empresa'),
+  termos: z
+    .boolean()
+    .refine((val) => val === true, {
+      message: 'Você precisa aceitar os termos e condições',
+    }),
 })
 
 type ContactFormData = z.infer<typeof schema>
@@ -25,10 +39,16 @@ export default function ContactForm() {
       phone: '',
       email: '',
       company: '',
+      termos: false,
     },
   })
 
   const handleSubmit = async (data: ContactFormData) => {
+    if (!data.termos) {
+      toast.error("Você precisa aceitar os termos e condições para continuar.")
+      return
+    }
+
     try {
       const nameParts = data.fullName.trim().split(' ')
       const firstName = nameParts[0]
@@ -55,7 +75,6 @@ export default function ContactForm() {
       )
 
       window.location.href = `https://wa.me/556281595786?text=${mensagemWhatsapp}`
-
     } catch (error) {
       toast.error('Erro ao enviar formulário. Tente novamente.')
       console.error(error)
@@ -88,7 +107,7 @@ export default function ContactForm() {
             </p>
           </div>
 
-          {/* Campos */}
+          {/* Campos do formulário */}
           <div className="space-y-6">
             <FormField
               name="fullName"
@@ -158,6 +177,38 @@ export default function ContactForm() {
               )}
             />
           </div>
+
+          {/* Checkbox de termos */}
+          <FormField
+            name="termos"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className="flex flex-col space-y-2 pt-4">
+                <div className="flex items-center space-x-2">
+                  <FormControl>
+                    <Checkbox
+                      id="termos"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel htmlFor="termos" className="text-sm">
+                    Estou de acordo com a{" "}
+                    <a
+                      href="https://www.r3suprimentos.com.br/politica-de-privacidade"
+                      className="text-blue-600 underline hover:text-blue-800"
+                      target="_blank"
+                      rel="https://www.r3suprimentos.com.br/politica-de-privacidade"
+                    >
+                      política de privacidade
+                    </a>{" "}
+                    deste formulário.
+                  </FormLabel>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* Botão */}
           <Button
