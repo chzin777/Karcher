@@ -2,8 +2,6 @@
 
 <div align="center">
   <img src="https://i.postimg.cc/CMvrd7y1/imagem-2025-07-18-152840104.png" alt="Landing Page Kärcher R3" style="width: 70%; max-width: 900px;">
-  <br>
-  <img src="https://i.postimg.cc/BnFmYGjL/imagem-2025-07-18-152918100.png" alt="Landing Page Kärcher R3 Formulário" style="width: 70%; max-width: 900px;">
 </div>
 
 ## 🌐 Acesse online:  
