@@ -52,11 +52,7 @@ Todo o desenvolvimento é em **Next.js** e a interface é 100% responsiva.
 
 ## Como usar
 
-1. **Clone ou baixe este repositório:**
-    ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
-    cd seu-repositorio
-    ```
+1. **Clone ou baixe este repositório**
 
 2. **Instale as dependências:**
     ```bash
