@@ -16,6 +16,11 @@ const montserratSans = Montserrat({
 export const metadata = {
   title: "Higiene profissional | R3 Suprimentos",
   description: "Soluções de limpeza profissional para supermercados, centros logísticos e indústrias com equipamentos de alta performance.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
   openGraph: {
     type: "website",
     url: "https://www.karcher-r3.com.br/",

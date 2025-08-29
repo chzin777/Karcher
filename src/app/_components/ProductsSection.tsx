@@ -1,6 +1,6 @@
 'use client'
 type ProductsSectionProps = {
-  handleScroll: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => void;
+  handleScroll: (e: React.MouseEvent<HTMLElement | HTMLAnchorElement>, target: string) => void;
 }
 
 
@@ -89,17 +89,33 @@ export default function ProductsSection({ handleScroll }: ProductsSectionProps) 
   return (
     <section
       id="produtos"
-      className="relative px-6 py-24 text-white bg-center bg-cover bg-no-repeat"
+      className="relative px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-white bg-center bg-cover bg-no-repeat"
       style={{ backgroundImage: "url('/images/bg-produtos.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/80"></div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Título da seção */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }}
+          className="text-center mb-12 sm:mb-16 md:mb-20"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#feed00]">
+            NOSSOS EQUIPAMENTOS
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            Conheça nossa linha completa de equipamentos de limpeza profissional
+          </p>
+        </motion.div>
+
         {products.map((product, index) => (
           <div
             key={index}
             className={`flex flex-col ${product.direction === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
-              } min-h-[500px] relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition duration-500 mb-32`}
+              } min-h-[400px] sm:min-h-[500px] relative overflow-hidden rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 mb-16 sm:mb-20 md:mb-32`}
           >
             {/* IMAGEM */}
             <motion.div
@@ -107,7 +123,7 @@ export default function ProductsSection({ handleScroll }: ProductsSectionProps) 
               initial="hidden"
               whileInView="visible"
               viewport={{ amount: 0.3 }}
-              className="w-full md:w-1/2 h-72 md:h-auto relative overflow-hidden"
+              className="w-full md:w-1/2 h-64 sm:h-72 md:h-auto relative overflow-hidden"
             >
               <div className="w-full h-full relative group transition duration-500 ease-in-out hover:scale-105 hover:brightness-110">
                 <img
@@ -130,26 +146,26 @@ export default function ProductsSection({ handleScroll }: ProductsSectionProps) 
               initial="hidden"
               whileInView="visible"
               viewport={{ amount: 0.3 }}
-              className={`w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-10 md:px-14 py-10 z-10 relative text-center md:text-left`}
+              className={`w-full md:w-1/2 flex flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-14 py-8 sm:py-10 z-10 relative text-center md:text-left`}
             >
-              <div className="max-w-3xl mx-auto md:mx-0 space-y-4">
-                <h2 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-yellow-400 uppercase tracking-wide leading-tight">
+              <div className="max-w-3xl mx-auto md:mx-0 space-y-3 sm:space-y-4">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-3 sm:mb-4 text-yellow-400 uppercase tracking-wide leading-tight">
                   {formatTitle(product.title)}
-                </h2>
+                </h3>
 
-                <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-2">
-                  <strong>{product.function}</strong>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 mb-2 font-semibold">
+                  {product.function}
                 </p>
 
-                <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-4">
-                  <strong>Ideal para:</strong> {product.ideal}
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-4">
+                  <strong className="text-[#feed00]">Ideal para:</strong> {product.ideal}
                 </p>
 
-                <div className="space-y-2 text-lg sm:text-xl md:text-2xl text-gray-200">
+                <div className="space-y-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200">
                   {product.benefits.map((benefit, i) => (
                     <p key={i} className="flex items-start gap-2 justify-center md:justify-start">
-                      <span className="text-[#feed00] text-2xl">•</span>
-                      <span>{benefit}</span>
+                      <span className="text-[#feed00] text-lg sm:text-xl md:text-2xl mt-1">•</span>
+                      <span className="flex-1">{benefit}</span>
                     </p>
                   ))}
                 </div>
@@ -160,12 +176,12 @@ export default function ProductsSection({ handleScroll }: ProductsSectionProps) 
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ amount: 0.3 }}
-                  className="mt-6"
+                  className="mt-6 pt-4"
                 >
                   <a
                     href="#contato"
                     onClick={(e) => handleScroll(e, '#contato')}
-                    className="inline-block bg-[#feed00] text-black px-6 py-3 text-base sm:text-lg font-bold uppercase hover:bg-black hover:text-[#feed00] transition"
+                    className="inline-block bg-[#feed00] text-black px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold uppercase hover:bg-black hover:text-[#feed00] transition-all duration-300 rounded-lg md:rounded-none shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                   >
                     Quero ver esse equipamento funcionando
                   </a>

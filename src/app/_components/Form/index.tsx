@@ -82,46 +82,47 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full px-4 bg-[#feed00] py-20">
+    <div className="flex items-center justify-center w-full px-4 sm:px-6 bg-[#feed00] py-12 sm:py-16 md:py-20">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-8 w-full max-w-3xl px-6 sm:px-12 py-12 sm:py-20 lg:px-20 lg:py-24 bg-white shadow-xl rounded-3xl text-black border border-gray-300 text-base sm:text-2xl"
+          className="space-y-6 sm:space-y-8 w-full max-w-4xl px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20 bg-white shadow-2xl rounded-2xl md:rounded-3xl text-black border border-gray-200"
         >
           {/* Logo */}
-          <div className="relative z-10 mb-8 sm:mb-10">
+          <div className="relative z-10 mb-6 sm:mb-8 md:mb-10">
             <img
               src="/images/logo-2.png"
               alt="Logo da R3 Suprimentos"
-              className="w-32 sm:w-52 h-auto mx-auto"
+              className="w-24 sm:w-32 md:w-40 lg:w-52 h-auto mx-auto"
             />
           </div>
 
           {/* CTA */}
-          <div className="max-w-3xl mx-auto mb-10 text-center space-y-4">
-            <h2 className="text-2xl sm:text-4xl font-bold leading-tight">
+          <div className="max-w-3xl mx-auto mb-8 sm:mb-10 text-center space-y-3 sm:space-y-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
               Pronto para transformar sua rotina com soluções inteligentes?
             </h2>
-            <p className="text-base sm:text-xl leading-relaxed text-gray-700">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-700 px-2">
               Agende agora sua demonstração gratuita com os especialistas da R3 Suprimentos e veja na prática como a tecnologia pode revolucionar a sua limpeza.
             </p>
           </div>
 
           {/* Campos do formulário */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <FormField
               name="fullName"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome completo</FormLabel>
+                  <FormLabel className="text-sm sm:text-base md:text-lg font-semibold">Nome completo</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      className="h-10 text-base sm:h-14 sm:text-xl"
+                      className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="Digite seu nome completo"
                     />
                   </FormControl>
+                  <FormMessage className="text-xs sm:text-sm" />
                 </FormItem>
               )}
             />
@@ -131,14 +132,15 @@ export default function ContactForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Telefone com DDD</FormLabel>
+                  <FormLabel className="text-sm sm:text-base md:text-lg font-semibold">Telefone com DDD</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      className="h-10 text-base sm:h-14 sm:text-xl"
+                      className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="(XX) XXXXX-XXXX"
                     />
                   </FormControl>
+                  <FormMessage className="text-xs sm:text-sm" />
                 </FormItem>
               )}
             />
@@ -148,14 +150,15 @@ export default function ContactForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>E-mail profissional</FormLabel>
+                  <FormLabel className="text-sm sm:text-base md:text-lg font-semibold">E-mail profissional</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      className="h-10 text-base sm:h-14 sm:text-xl"
+                      className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="email@empresa.com"
                     />
                   </FormControl>
+                  <FormMessage className="text-xs sm:text-sm" />
                 </FormItem>
               )}
             />
@@ -165,14 +168,15 @@ export default function ContactForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nome da empresa</FormLabel>
+                  <FormLabel className="text-sm sm:text-base md:text-lg font-semibold">Nome da empresa</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      className="h-10 text-base sm:h-14 sm:text-xl"
+                      className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="Digite o nome da empresa"
                     />
                   </FormControl>
+                  <FormMessage className="text-xs sm:text-sm" />
                 </FormItem>
               )}
             />
@@ -184,28 +188,29 @@ export default function ContactForm() {
             control={form.control}
             render={({ field }) => (
               <FormItem className="flex flex-col space-y-2 pt-4">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-start space-x-3">
                   <FormControl>
                     <Checkbox
                       id="termos"
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      className="mt-1 w-5 h-5 sm:w-6 sm:h-6"
                     />
                   </FormControl>
-                  <FormLabel htmlFor="termos" className="text-sm">
+                  <FormLabel htmlFor="termos" className="text-xs sm:text-sm md:text-base leading-relaxed cursor-pointer">
                     Estou de acordo com a{" "}
                     <a
                       href="https://www.r3suprimentos.com.br/politica-de-privacidade"
-                      className="text-blue-600 underline hover:text-blue-800"
+                      className="text-blue-600 underline hover:text-blue-800 transition-colors"
                       target="_blank"
-                      rel="https://www.r3suprimentos.com.br/politica-de-privacidade"
+                      rel="noopener noreferrer"
                     >
                       política de privacidade
                     </a>{" "}
                     deste formulário.
                   </FormLabel>
                 </div>
-                <FormMessage />
+                <FormMessage className="text-xs sm:text-sm" />
               </FormItem>
             )}
           />
@@ -213,9 +218,14 @@ export default function ContactForm() {
           {/* Botão */}
           <Button
             type="submit"
-            className="w-full bg-[#219fda] text-white text-center text-base sm:text-xl py-6 sm:py-5 mt-4 leading-snug"
+            className="w-full bg-[#219fda] hover:bg-[#1a7fb8] text-white text-center text-sm sm:text-base md:text-lg lg:text-xl font-bold py-4 sm:py-5 md:py-6 mt-6 sm:mt-8 leading-snug rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl uppercase"
           >
-            AGENDAR MINHA DEMONSTRAÇÃO<br className="block sm:hidden" /> GRATUITA!!
+            <span className="block sm:hidden">
+              AGENDAR DEMONSTRAÇÃO<br />GRATUITA!
+            </span>
+            <span className="hidden sm:block">
+              AGENDAR MINHA DEMONSTRAÇÃO GRATUITA!
+            </span>
           </Button>
         </form>
       </Form>
