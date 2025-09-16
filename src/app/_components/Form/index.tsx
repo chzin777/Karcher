@@ -54,9 +54,10 @@ export default function ContactForm() {
       const firstName = nameParts[0]
       const lastName = nameParts.slice(1).join(' ') || 'Não informado'
 
+      // Adiciona o sufixo solicitado ao lastName para envio ao N8N
       const payload = {
         firstName,
-        lastName,
+        lastName: `${lastName} - Karcher`,
         email: data.email,
         phone: data.phone,
         company: data.company,
@@ -118,6 +119,7 @@ export default function ContactForm() {
                   <FormControl>
                     <Input
                       {...field}
+                      required
                       className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="Digite seu nome completo"
                     />
@@ -136,6 +138,7 @@ export default function ContactForm() {
                   <FormControl>
                     <Input
                       {...field}
+                      required
                       className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="(XX) XXXXX-XXXX"
                     />
@@ -154,6 +157,7 @@ export default function ContactForm() {
                   <FormControl>
                     <Input
                       {...field}
+                      required
                       className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="email@empresa.com"
                     />
@@ -172,6 +176,7 @@ export default function ContactForm() {
                   <FormControl>
                     <Input
                       {...field}
+                      required
                       className="h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg px-4 rounded-lg border-2 border-gray-300 focus:border-[#219fda] transition-colors"
                       placeholder="Digite o nome da empresa"
                     />
